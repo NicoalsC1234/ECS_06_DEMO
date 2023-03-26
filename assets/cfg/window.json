@@ -1,0 +1,13 @@
+{
+    "title": "MISO - Demostración - Arkanoid con editor",
+    "size": {
+        "w": 640,
+        "h": 360
+    },
+    "bg_color": {
+        "r": 50,
+        "g": 50,
+        "b": 50
+    },
+    "framerate": 60
+}
