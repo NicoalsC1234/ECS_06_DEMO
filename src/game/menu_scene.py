@@ -12,6 +12,8 @@ class MenuScene(Scene):
                     pygame.Color(255, 255, 0), pygame.Vector2(320, 210), TextAlignment.CENTER)        
         create_text(self.ecs_world, "Arrows to MOVE - P to PAUSE", 8, 
                     pygame.Color(150, 150, 255), pygame.Vector2(320, 250), TextAlignment.CENTER)
+        create_text(self.ecs_world, "Creado por el equipo Pinguino", 8, 
+                    pygame.Color(150, 150, 255), pygame.Vector2(320, 250), TextAlignment.CENTER)
         
         start_game_action = self.ecs_world.create_entity()
         self.ecs_world.add_component(start_game_action,
