@@ -1,13 +1,13 @@
 {
-    "title": "MISO - Demostración - Arkanoid con editor",
+    "title": "MISO - Invaders",
     "size": {
-        "w": 640,
-        "h": 360
+        "w": 256,
+        "h": 240
     },
     "bg_color": {
-        "r": 50,
-        "g": 50,
-        "b": 50
+        "r": 0,
+        "g": 0,
+        "b": 0
     },
     "framerate": 60
 }

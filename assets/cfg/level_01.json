@@ -1,57 +1,294 @@
 {
-    "ball_start": {
-        "pos": {
-            "x": 314.0,
-            "y": 200.0
-        }
+    "player_spawn": {
+        "position": {
+            "x": 128,
+            "y": 220
+        },
+        "max_bullets": 50
     },
-    "paddle_start": {
-        "pos": {
-            "x": 294.0,
-            "y": 320.0
-        }
-    },
-    "blocks_field": [
+    "enemy_spawn_events": [
         {
-            "type": "B1",
-            "pos": {
-                "x": 50.0,
-                "y": 100.0
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 20,
+                "y": 60
             }
         },
         {
-            "type": "B2",
-            "pos": {
-                "x": 150.0,
-                "y": 100.0
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 40,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 60,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 80,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 100,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 110,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 120,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 140,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 160,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 180,
+                "y": 60
+            }
+        },
+
+
+        {
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 20,
+                "y": 80
             }
         },
         {
-            "type": "B3",
-            "pos": {
-                "x": 250.0,
-                "y": 100.0
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 40,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 60,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 80,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 100,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 110,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 120,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 140,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 160,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 180,
+                "y": 80
+            }
+        },
+
+
+        {
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 40,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 60,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 80,
+                "y": 140
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 100,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 110,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 120,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 140,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 160,
+                "y": 100
+            }
+        },
+
+
+
+        {
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 40,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 60,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 80,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 100,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 110,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 120,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 140,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 160,
+                "y": 120
+            }
+        },
+
+
+
+        {
+            "time": 0.0,
+            "enemy_type": "Enemy04",
+            "position": {
+                "x": 60,
+                "y": 140
             }
         },
         {
-            "type": "B4",
-            "pos": {
-                "x": 350.0,
-                "y": 100.0
-            }
-        },
-        {
-            "type": "B5",
-            "pos": {
-                "x": 450.0,
-                "y": 100.0
-            }
-        },
-        {
-            "type": "B6",
-            "pos": {
-                "x": 550.0,
-                "y": 100.0
+            "time": 0.0,
+            "enemy_type": "Enemy04",
+            "position": {
+                "x": 140,
+                "y": 140
             }
         }
     ]
