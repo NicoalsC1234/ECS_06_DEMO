@@ -1,6 +1,8 @@
 import random
 import pygame
 import esper
+import time
+
 
 from src.ecs.components.c_input_command import CInputCommand
 from src.ecs.components.c_surface import CSurface

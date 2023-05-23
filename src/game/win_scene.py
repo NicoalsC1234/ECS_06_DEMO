@@ -6,11 +6,11 @@ from src.ecs.components.c_input_command import CInputCommand
 
 class WinScene(Scene):
     def do_create(self):
-        create_text(self.ecs_world, "YOU COMPLETED THE LEVEL!", 16, 
+        create_text(self.ecs_world, "YOU COMPLETED THE LEVEL!", 10, 
                     pygame.Color(255, 0, 0), pygame.Vector2(128, 90), TextAlignment.CENTER)
-        create_text(self.ecs_world, "PRESS Z TO TRY AGAIN", 11, 
+        create_text(self.ecs_world, "PRESS Z TO TRY AGAIN", 6, 
                     pygame.Color(255, 255, 0), pygame.Vector2(128, 130), TextAlignment.CENTER)        
-        create_text(self.ecs_world, "PRESS ESC TO GO TO THE MAIN MENU", 11, 
+        create_text(self.ecs_world, "PRESS ESC TO GO TO THE MAIN MENU", 6, 
                     pygame.Color(255, 255, 0), pygame.Vector2(128, 140), TextAlignment.CENTER)        
         
         start_game_action = self.ecs_world.create_entity()
