@@ -47,7 +47,7 @@
             "time": 0.0,
             "enemy_type": "Enemy01",
             "position": {
-                "x": 200,
+                "x": 110,
                 "y": 140
             }
         },{
@@ -76,6 +76,13 @@
             "enemy_type": "Enemy01",
             "position": {
                 "x": 180,
+                "y": 140
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 200,
                 "y": 140
             }
         },
@@ -121,37 +128,37 @@
             "time": 0.0,
             "enemy_type": "Enemy01",
             "position": {
+                "x": 120,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 140,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 160,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 180,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
                 "x": 200,
                 "y": 120
             }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
-                "x": 120,
-                "y": 120
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
-                "x": 140,
-                "y": 120
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
-                "x": 160,
-                "y": 120
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
-                "x": 180,
-                "y": 120
-            }
         },
 
 
@@ -183,14 +190,8 @@
                 "x": 100,
                 "y": 100
             }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy02",
-            "position": {
-                "x": 180,
-                "y": 100
-            }
-        },{
+        },
+        {
             "time": 0.0,
             "enemy_type": "Enemy02",
             "position": {
@@ -209,6 +210,13 @@
             "enemy_type": "Enemy02",
             "position": {
                 "x": 160,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 180,
                 "y": 100
             }
         },
@@ -247,7 +255,7 @@
             "time": 0.0,
             "enemy_type": "Enemy03",
             "position": {
-                "x": 180,
+                "x": 110,
                 "y": 80
             }
         },{
@@ -269,6 +277,13 @@
             "enemy_type": "Enemy03",
             "position": {
                 "x": 160,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 180,
                 "y": 80
             }
         },

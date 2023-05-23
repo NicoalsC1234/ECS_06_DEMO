@@ -1,6 +1,7 @@
 from enum import Enum
 import json
 import pygame
+import time
 
 from src.engine.scenes.scene import Scene
 from src.engine.service_locator import ServiceLocator
@@ -15,11 +16,8 @@ from src.ecs.components.c_input_command import CInputCommand, CommandPhase
 from src.ecs.components.c_surface import CSurface
 from src.ecs.components.c_transform import CTransform 
 from src.ecs.components.c_velocity import CVelocity
-from src.ecs.components.editor.c_editor_draggable import CEditorDraggable
 from src.ecs.components.editor.c_editor_placer import CEditorPlacer
-from src.ecs.components.tags.c_tag_ball import CTagBall
-from src.ecs.components.tags.c_tag_block import CTagBlock
-from src.ecs.components.tags.c_tag_paddle import CTagPaddle
+
 from src.ecs.components.tags.c_tag_bullet import CTagBullet
 
 
@@ -27,17 +25,12 @@ from src.ecs.components.tags.c_tag_bullet import CTagBullet
 from src.ecs.systems.s_animation import system_animation
 from src.ecs.systems.s_collision_player_enemy import system_collision_player_enemy
 from src.ecs.systems.s_collision_enemy_bullet import system_collision_enemy_bullet
-from src.ecs.systems.editor.s_editor_draggable import system_editor_draggable
 from src.ecs.systems.s_enemy_count import system_enemy_count
-from src.ecs.systems.s_collision_ball_block import system_collision_ball_block
-from src.ecs.systems.s_collision_paddle_ball import system_collision_paddle_ball
-from src.ecs.systems.s_follow_mouse import system_follow_mouse
+
 from src.ecs.systems.s_movement import system_movement
 from src.ecs.systems.s_rendering import system_rendering
 from src.ecs.systems.debug.s_rendering_debug_rects import system_rendering_debug_rects
 from src.ecs.systems.debug.s_rendering_debug_velocity import system_rendering_debug_velocity
-from src.ecs.systems.s_screen_ball import system_screen_ball
-from src.ecs.systems.s_screen_paddle import system_screen_paddle
 
 from src.ecs.systems.s_enemy_spawner import system_enemy_spawner
 from src.ecs.systems.s_input_player import system_input_player
@@ -75,7 +68,7 @@ class PlayScene(Scene):
             self.bullet_cfg = json.load(bullet_file)
         with open("assets/cfg/explosion.json") as explosion_file:
             self.explosion_cfg = json.load(explosion_file)
-        
+        self.last_shot_time = 0
         self._paused = False
         self._debug_view = DebugView.NONE
 
@@ -131,10 +124,10 @@ class PlayScene(Scene):
     def do_update(self, delta_time: float):
         system_screen_player(self.ecs_world, self.screen_rect, self)
         system_screen_bullet(self.ecs_world, self.screen_rect)
-        #system_enemy_count(self.ecs_world, self)
         
         if not self._paused:
             system_enemy_spawner(self.ecs_world, self.enemies_cfg, delta_time)
+            system_enemy_count(self.ecs_world, self)
             system_movement(self.ecs_world, delta_time)
             
             self.score += system_collision_enemy_bullet(self.ecs_world, self.explosion_cfg)
@@ -186,9 +179,13 @@ class PlayScene(Scene):
                 self._player_c_v.vel.x += self.player_cfg["input_velocity"]
             elif action.phase == CommandPhase.END:
                 self._player_c_v.vel.x -= self.player_cfg["input_velocity"]
-        if action.name == "PLAYER_FIRE" and self.num_bullets < self.level_01_cfg["player_spawn"]["max_bullets"]:
-            create_bullet(self.ecs_world, self._player_c_t.pos,
-                          self._player_c_s.area.size, self.bullet_cfg)
+        if action.name == "PLAYER_FIRE":
+            current_time = time.time()
+            time_since_last_shot = current_time - self.last_shot_time
+            if time_since_last_shot >= 0.3:  # Espera de 0.3 segundos entre disparos
+                create_bullet(self.ecs_world, self._player_c_t.pos,
+                              self._player_c_s.area.size, self.bullet_cfg)
+                self.last_shot_time = current_time
 
         if action.name == "QUIT_TO_MENU" and action.phase == CommandPhase.START:
             self.switch_scene("MENU_SCENE")
@@ -204,6 +201,3 @@ class PlayScene(Scene):
                 self._debug_view = DebugView.VELOCITY
             elif self._debug_view == DebugView.VELOCITY:
                 self._debug_view = DebugView.NONE
-
-    
-

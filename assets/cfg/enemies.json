@@ -21,6 +21,8 @@
         },
         "velocity_chase": 75,
         "velocity_return": 100,
+        "fall_velocity":75,
+        "fall_probability":0.99,
         "distance_start_chase": 100,
         "distance_start_return": 200
     },
@@ -46,6 +48,8 @@
         },
         "velocity_chase": 75,
         "velocity_return": 100,
+        "fall_velocity":200,
+        "fall_probability":0.29,
         "distance_start_chase": 100,
         "distance_start_return": 200
     },
@@ -71,6 +75,8 @@
         },
         "velocity_chase": 75,
         "velocity_return": 100,
+        "fall_velocity":50,
+        "fall_probability":0.09,
         "distance_start_chase": 100,
         "distance_start_return": 200
     },
