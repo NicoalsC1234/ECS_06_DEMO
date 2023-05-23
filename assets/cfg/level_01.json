@@ -47,13 +47,6 @@
             "time": 0.0,
             "enemy_type": "Enemy01",
             "position": {
-                "x": 110,
-                "y": 60
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
                 "x": 120,
                 "y": 60
             }
@@ -76,6 +69,13 @@
             "enemy_type": "Enemy01",
             "position": {
                 "x": 180,
+                "y": 60
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 200,
                 "y": 60
             }
         },
@@ -121,13 +121,6 @@
             "time": 0.0,
             "enemy_type": "Enemy01",
             "position": {
-                "x": 110,
-                "y": 80
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
                 "x": 120,
                 "y": 80
             }
@@ -150,6 +143,13 @@
             "enemy_type": "Enemy01",
             "position": {
                 "x": 180,
+                "y": 80
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy01",
+            "position": {
+                "x": 200,
                 "y": 80
             }
         },
@@ -187,13 +187,6 @@
             "time": 0.0,
             "enemy_type": "Enemy02",
             "position": {
-                "x": 110,
-                "y": 100
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy02",
-            "position": {
                 "x": 120,
                 "y": 100
             }
@@ -209,6 +202,13 @@
             "enemy_type": "Enemy02",
             "position": {
                 "x": 160,
+                "y": 100
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy02",
+            "position": {
+                "x": 180,
                 "y": 100
             }
         },
@@ -247,13 +247,6 @@
             "time": 0.0,
             "enemy_type": "Enemy03",
             "position": {
-                "x": 110,
-                "y": 120
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy03",
-            "position": {
                 "x": 120,
                 "y": 120
             }
@@ -269,6 +262,13 @@
             "enemy_type": "Enemy03",
             "position": {
                 "x": 160,
+                "y": 120
+            }
+        },{
+            "time": 0.0,
+            "enemy_type": "Enemy03",
+            "position": {
+                "x": 180,
                 "y": 120
             }
         },
