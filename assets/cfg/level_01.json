@@ -47,13 +47,6 @@
             "time": 0.0,
             "enemy_type": "Enemy01",
             "position": {
-                "x": 110,
-                "y": 140
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy01",
-            "position": {
                 "x": 120,
                 "y": 140
             }
@@ -249,13 +242,6 @@
             "enemy_type": "Enemy03",
             "position": {
                 "x": 100,
-                "y": 80
-            }
-        },{
-            "time": 0.0,
-            "enemy_type": "Enemy03",
-            "position": {
-                "x": 110,
                 "y": 80
             }
         },{
