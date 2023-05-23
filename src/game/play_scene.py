@@ -60,6 +60,8 @@ class PlayScene(Scene):
     def __init__(self, level_path:str, engine:'src.engine.game_engine.GameEngine') -> None:
         super().__init__(engine)
         self.level_path = level_path
+
+        self.score = 0
         
         with open(level_path) as level_file:
             self.level_cfg = json.load(level_file)
@@ -83,8 +85,12 @@ class PlayScene(Scene):
         with open(self.level_path) as level_file:
             self.level_cfg = json.load(level_file)
 
-        create_text(self.ecs_world, "Press ESC to go back", 8, 
-                    pygame.Color(50, 255, 50), pygame.Vector2(128, 20), 
+        create_text(self.ecs_world, "HI-SCORE", 8, 
+                    pygame.Color(255, 0, 0), pygame.Vector2(128, 20), 
+                    TextAlignment.CENTER)
+        
+        create_text(self.ecs_world, "1-UP", 8, 
+                    pygame.Color(255, 0, 0), pygame.Vector2(40, 20), 
                     TextAlignment.CENTER)
 
         self._player_entity = create_player_square(self.ecs_world, self.player_cfg, self.level_01_cfg["player_spawn"])
@@ -130,9 +136,12 @@ class PlayScene(Scene):
         if not self._paused:
             system_enemy_spawner(self.ecs_world, self.enemies_cfg, delta_time)
             system_movement(self.ecs_world, delta_time)
-            system_collision_enemy_bullet(self.ecs_world, self.explosion_cfg)
-            system_collision_player_enemy(self.ecs_world, self._player_entity,
-                                      self.level_01_cfg, self.explosion_cfg)
+            
+            self.score += system_collision_enemy_bullet(self.ecs_world, self.explosion_cfg)
+
+            if system_collision_player_enemy(self.ecs_world, self._player_entity,
+                                      self.level_01_cfg, self.explosion_cfg):
+                self.score = 0
             system_explosion_kill(self.ecs_world)
             system_player_state(self.ecs_world)
             system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy01"])
@@ -147,6 +156,13 @@ class PlayScene(Scene):
     def do_draw(self, screen):
         # Evaluar vistas de depurado y vistas normales
         if not self._debug_view == DebugView.RECTS:
+            blue = (255, 255, 255)
+            font = pygame.font.Font('freesansbold.ttf', 10)
+            if self.score == 0: 
+                text = font.render("00000", True, blue, pygame.Color(0, 0, 0))
+            else: 
+                text = font.render(str(self.score*10000), True, blue, pygame.Color(0, 0, 0))
+            screen.blit(text, (20,40))
             system_rendering(self.ecs_world, screen)
         else:
             system_rendering_debug_rects(self.ecs_world, screen)

@@ -9,7 +9,8 @@ from src.ecs.components.tags.c_tag_bullet import CTagBullet
 from src.create.prefab_creator import create_explosion
 
 
-def system_collision_enemy_bullet(world: esper.World, explosion_info: dict):
+def system_collision_enemy_bullet(world: esper.World, explosion_info: dict) -> int:
+    collision = 0
     components_enemy = world.get_components(CSurface, CTransform, CTagEnemy)
     components_bullet = world.get_components(CSurface, CTransform, CTagBullet)
 
@@ -23,3 +24,6 @@ def system_collision_enemy_bullet(world: esper.World, explosion_info: dict):
                 world.delete_entity(enemy_entity)
                 world.delete_entity(bullet_entity)
                 create_explosion(world, c_t.pos, explosion_info)
+                collision += 1
+                print(str(collision))
+    return collision

@@ -8,11 +8,11 @@ from src.create.prefab_creator import create_explosion
 
 
 def system_collision_player_enemy(world: esper.World, player_entity: int,
-                                  level_cfg: dict, explosion_info: dict):
+                                  level_cfg: dict, explosion_info: dict) -> bool:
     components = world.get_components(CSurface, CTransform, CTagEnemy)
     pl_t = world.component_for_entity(player_entity, CTransform)
     pl_s = world.component_for_entity(player_entity, CSurface)
-
+    choca = False
     pl_rect = pl_s.area.copy()
     pl_rect.topleft = pl_t.pos
 
@@ -24,3 +24,5 @@ def system_collision_player_enemy(world: esper.World, player_entity: int,
             pl_t.pos.x = level_cfg["player_spawn"]["position"]["x"] - pl_s.area.w / 2
             pl_t.pos.y = level_cfg["player_spawn"]["position"]["y"] - pl_s.area.h / 2
             create_explosion(world, c_t.pos, explosion_info)
+            choca = True
+    return choca

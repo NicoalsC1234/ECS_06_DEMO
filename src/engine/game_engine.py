@@ -22,6 +22,7 @@ class GameEngine:
         self._clock = pygame.time.Clock()
         self._framerate = self.window_cfg["framerate"]
         self._delta_time = 0
+
         self._bg_color = pygame.Color(self.window_cfg["bg_color"]["r"],
                                      self.window_cfg["bg_color"]["g"],
                                      self.window_cfg["bg_color"]["b"])
@@ -67,7 +68,7 @@ class GameEngine:
         self._current_scene.simulate(self._delta_time)
 
     def _draw(self):
-        self.screen.fill(self._bg_color)        
+        self.screen.fill(self._bg_color)      
         self._current_scene.do_draw(self.screen)
         pygame.display.flip()        
 
