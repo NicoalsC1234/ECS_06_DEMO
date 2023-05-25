@@ -25,5 +25,4 @@ def system_collision_enemy_bullet(world: esper.World, explosion_info: dict) -> i
                 world.delete_entity(bullet_entity)
                 create_explosion(world, c_t.pos, explosion_info)
                 collision += 1
-                print(str(collision))
     return collision

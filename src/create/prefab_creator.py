@@ -87,6 +87,7 @@ def create_input_player(world: esper.World):
     input_right = world.create_entity()
     input_up = world.create_entity()
     input_down = world.create_entity()
+    input_explotion = world.create_entity()
 
     world.add_component(input_left,
                         CInputCommand("PLAYER_LEFT", pygame.K_LEFT))
@@ -96,6 +97,8 @@ def create_input_player(world: esper.World):
                         CInputCommand("PLAYER_UP", pygame.K_UP))
     world.add_component(input_down,
                         CInputCommand("PLAYER_DOWN", pygame.K_DOWN))
+    world.add_component(input_explotion,
+                        CInputCommand("PLAYER_EXPLOTION", pygame.K_x))
 
     input_fire = world.create_entity()
     world.add_component(input_fire,

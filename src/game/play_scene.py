@@ -59,6 +59,8 @@ class PlayScene(Scene):
         self.lifes = 4
 
         self.levels = 0
+
+        self.bombs = 1
         
         with open(level_path) as level_file:
             self.level_cfg = json.load(level_file)
@@ -133,7 +135,8 @@ class PlayScene(Scene):
         
         if not self._paused:
             system_enemy_spawner(self.ecs_world, self.enemies_cfg, delta_time)
-            system_enemy_count(self.ecs_world, self)
+            if system_enemy_count(self.ecs_world, self, 1):
+                self.levels += 1
             system_movement(self.ecs_world, delta_time)
             
             self.score += system_collision_enemy_bullet(self.ecs_world, self.explosion_cfg)
@@ -142,9 +145,9 @@ class PlayScene(Scene):
                                       self.level_01_cfg, self.explosion_cfg):
                 if self.high_score < self.score:
                     self.high_score = self.score
-                    print(self.high_score)
                 self.score = 0
                 self.lifes -= 1
+                
 
             system_explosion_kill(self.ecs_world)
             system_player_state(self.ecs_world)
@@ -160,6 +163,9 @@ class PlayScene(Scene):
                     high_score_file.write(score)
                 self.switch_scene("GAME_OVER_SCENE")
                 self.lifes = 4
+                self.levels = 0
+                self.bombs = 1
+
 
         
         self.ecs_world._clear_dead_entities()
@@ -176,9 +182,15 @@ class PlayScene(Scene):
                 text = font.render("Score: " + str(self.score*10000), True, blue, pygame.Color(0, 0, 0))
             text1 = font.render(str(self.lifes) + "-UP", True, blue, pygame.Color(0, 0, 0))
             text2 = font.render(str(self.high_score*10000), True, blue, pygame.Color(0, 0, 0))
+            text3 = font.render("Levels:" + str(self.levels), True, blue, pygame.Color(0, 0, 0))
+            text4 = font.render("Bombs:" + str(self.bombs), True, blue, pygame.Color(0, 0, 0))
+
+            
             screen.blit(text, (20,40))
             screen.blit(text1, (20,20))
             screen.blit(text2, (120,40))
+            screen.blit(text3, (180,40))
+            screen.blit(text4, (180,20))
             system_rendering(self.ecs_world, screen)
         else:
             system_rendering_debug_rects(self.ecs_world, screen)
@@ -202,6 +214,10 @@ class PlayScene(Scene):
                 self._player_c_v.vel.x += self.player_cfg["input_velocity"]
             elif action.phase == CommandPhase.END:
                 self._player_c_v.vel.x -= self.player_cfg["input_velocity"]
+        if action.name == "PLAYER_EXPLOTION":
+            if self.bombs == 1:
+                system_enemy_count(self.ecs_world, self, 0)
+                self.bombs = 0
         if action.name == "PLAYER_FIRE":
             current_time = time.time()
             time_since_last_shot = current_time - self.last_shot_time
