@@ -55,6 +55,10 @@ class PlayScene(Scene):
         self.level_path = level_path
 
         self.score = 0
+
+        self.lifes = 4
+
+        self.levels = 0
         
         with open(level_path) as level_file:
             self.level_cfg = json.load(level_file)
@@ -68,9 +72,13 @@ class PlayScene(Scene):
             self.bullet_cfg = json.load(bullet_file)
         with open("assets/cfg/explosion.json") as explosion_file:
             self.explosion_cfg = json.load(explosion_file)
+        with open("assets/cfg/high_score.json") as high_score_file:
+            self.high_score_cfg = json.load(high_score_file)
         self.last_shot_time = 0
         self._paused = False
         self._debug_view = DebugView.NONE
+
+        self.high_score = self.high_score_cfg["score"]
 
     def do_create(self):
         # Recargar nivel, por si acaso estoy entrando 
@@ -82,9 +90,7 @@ class PlayScene(Scene):
                     pygame.Color(255, 0, 0), pygame.Vector2(128, 20), 
                     TextAlignment.CENTER)
         
-        create_text(self.ecs_world, "1-UP", 8, 
-                    pygame.Color(255, 0, 0), pygame.Vector2(40, 20), 
-                    TextAlignment.CENTER)
+
 
         self._player_entity = create_player_square(self.ecs_world, self.player_cfg, self.level_01_cfg["player_spawn"])
         self._player_c_v = self.ecs_world.component_for_entity(self._player_entity, CVelocity)
@@ -134,14 +140,27 @@ class PlayScene(Scene):
 
             if system_collision_player_enemy(self.ecs_world, self._player_entity,
                                       self.level_01_cfg, self.explosion_cfg):
+                if self.high_score < self.score:
+                    self.high_score = self.score
+                    print(self.high_score)
                 self.score = 0
+                self.lifes -= 1
+
             system_explosion_kill(self.ecs_world)
             system_player_state(self.ecs_world)
             system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy01"])
             system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy02"])
             system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy03"])
             system_animation(self.ecs_world, delta_time)
-    
+            if self.lifes == 0:
+                
+                with open("assets/cfg/high_score.json", "w") as high_score_file:
+                    score = {"score": self.high_score}
+                    score = json.dumps(score)
+                    high_score_file.write(score)
+                self.switch_scene("GAME_OVER_SCENE")
+                self.lifes = 4
+
         
         self.ecs_world._clear_dead_entities()
         self.num_bullets = len(self.ecs_world.get_component(CTagBullet))
@@ -152,10 +171,14 @@ class PlayScene(Scene):
             blue = (255, 255, 255)
             font = pygame.font.Font('freesansbold.ttf', 10)
             if self.score == 0: 
-                text = font.render("00000", True, blue, pygame.Color(0, 0, 0))
+                text = font.render("Score 00000", True, blue, pygame.Color(0, 0, 0))
             else: 
-                text = font.render(str(self.score*10000), True, blue, pygame.Color(0, 0, 0))
+                text = font.render("Score: " + str(self.score*10000), True, blue, pygame.Color(0, 0, 0))
+            text1 = font.render(str(self.lifes) + "-UP", True, blue, pygame.Color(0, 0, 0))
+            text2 = font.render(str(self.high_score*10000), True, blue, pygame.Color(0, 0, 0))
             screen.blit(text, (20,40))
+            screen.blit(text1, (20,20))
+            screen.blit(text2, (120,40))
             system_rendering(self.ecs_world, screen)
         else:
             system_rendering_debug_rects(self.ecs_world, screen)
@@ -189,6 +212,9 @@ class PlayScene(Scene):
 
         if action.name == "QUIT_TO_MENU" and action.phase == CommandPhase.START:
             self.switch_scene("MENU_SCENE")
+
+        if action.name == "GAME OVER" and action.phase ==  CommandPhase.START:
+            self.switch_scene("GAME_OVER_SCENE")
 
         if action.name == "PAUSE" and action.phase == CommandPhase.START:
             self._paused = not self._paused
