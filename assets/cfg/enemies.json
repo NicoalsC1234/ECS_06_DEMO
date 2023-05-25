@@ -19,7 +19,7 @@
                 }
             ]
         },
-        "velocity_chase": 55,
+        "velocity_chase": 35,
         "velocity_return": 100,
         "fall_velocity":75,
         "fall_probability":0.99,
@@ -46,7 +46,7 @@
                 }
             ]
         },
-        "velocity_chase": 55,
+        "velocity_chase": 35,
         "velocity_return": 100,
         "fall_velocity":200,
         "fall_probability":0.29,
@@ -73,7 +73,7 @@
                 }
             ]
         },
-        "velocity_chase": 55,
+        "velocity_chase": 35,
         "velocity_return": 100,
         "fall_velocity":50,
         "fall_probability":0.09,

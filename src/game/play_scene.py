@@ -151,9 +151,9 @@ class PlayScene(Scene):
 
             system_explosion_kill(self.ecs_world)
             system_player_state(self.ecs_world)
-            system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy01"])
-            system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy02"])
-            system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy03"])
+            system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy01"], 1)
+            system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy02"], 2)
+            system_enemy_hunter_state(self.ecs_world, self._player_entity, self.enemies_cfg["Enemy03"],3 )
             system_animation(self.ecs_world, delta_time)
             if self.lifes == 0:
                 
